@@ -9,6 +9,8 @@ const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
       return "bg-light-primary-100";
     case "dark-blue":
       return "bg-dark-primary-100";
+    case "blue":
+      return "bg-dark-primary-300";
     case "white":
       return "bg-white";
     case "disabled":
