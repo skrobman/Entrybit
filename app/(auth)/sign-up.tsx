@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import BackButton from "@/components/buttons/BackButton";
 import AuthInput from "@/components/inputs/AuthInput";
 import CustomBigButton from "@/components/buttons/CustomBigButton";
+import useThemeSwitch from "@/hooks/useThemeSwitch";
 
 const SignUp = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -21,6 +22,11 @@ const SignUp = () => {
   const [confirmTouched, setConfirmTouched] = useState(false);
   const [emailTouched, setEmailTouched] = useState(false);
 
+  const { colorScheme } = useThemeSwitch();
+
+  const textInputColor = colorScheme === "dark" ? "#BDBEC0" : "#51586D";
+  const accountBtnBg = colorScheme === "dark" ? "blue" : "primary";
+
   const validateEmailOrPhone = (input: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+?[1-9]\d{1,14}$/;
@@ -28,7 +34,7 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 dark:bg-dark-surface-200">
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         className="flex-1"
@@ -41,12 +47,12 @@ const SignUp = () => {
 
             <View className="mx-4 pt-9">
               <Text
-                className="font-SoraSemiBold text-light-txt-100"
+                className="font-SoraSemiBold text-light-txt-100 dark:text-dark-txt-100"
                 style={{ fontSize: 22, lineHeight: 32 }}
               >
                 Join Us Today! Sign Up for a New Account
               </Text>
-              <Text className="text-light-txt-200 mt-2 font-SoraRegular">
+              <Text className="text-light-txt-200 mt-2 font-SoraRegular dark:text-dark-txt-200">
                 Ready to explore a world of possibilities? Sign up now to create
                 your account.
               </Text>
@@ -57,7 +63,7 @@ const SignUp = () => {
                 className="mx-4"
                 title="Email Address/ Phone Number"
                 placeholder="user@gmail.com"
-                placeholderTextColor="#51586D"
+                placeholderTextColor={textInputColor}
                 secureTextEntry={false}
                 onChangeText={setEmailOrPhone}
                 error={emailTouched && !validateEmailOrPhone(emailOrPhone)}
@@ -68,7 +74,7 @@ const SignUp = () => {
                 className="mx-4"
                 title="Create Password"
                 placeholder="●●●●●●●●"
-                placeholderTextColor="#51586D"
+                placeholderTextColor={textInputColor}
                 secureTextEntry={true}
                 error={passwordTouched && password.length < 8}
                 errorMessage="Must be at least 8 characters"
@@ -79,7 +85,7 @@ const SignUp = () => {
                 className="mx-4"
                 title="Confirm Password"
                 placeholder="Confirm Password"
-                placeholderTextColor="#51586D"
+                placeholderTextColor={textInputColor}
                 secureTextEntry={true}
                 error={confirmTouched && confirmPassword !== password}
                 errorMessage="Passwords do not match"
@@ -89,7 +95,7 @@ const SignUp = () => {
             </View>
           </ScrollView>
           <View className="absolute bottom-0 left-0 right-0 mx-4 mb-2">
-            <CustomBigButton title="Create Account" />
+            <CustomBigButton title="Create Account" bgVariant={accountBtnBg} />
           </View>
         </View>
       </KeyboardAvoidingView>

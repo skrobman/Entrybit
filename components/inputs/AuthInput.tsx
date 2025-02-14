@@ -28,8 +28,8 @@ const AuthInput = ({
         <Text
           className={`font-SoraSemiBold mb-2 ${
             error
-              ? "text-light-alert-300 dark: text-dark-alert-300"
-              : "text-light-txt-100"
+              ? "text-light-alert-300"
+              : "text-light-txt-100 dark:text-dark-txt-100"
           }`}
         >
           {title}
@@ -38,9 +38,9 @@ const AuthInput = ({
           placeholder={placeholder}
           className={`bg-light-surface-300 border ${
             error
-              ? "border-light-alert-300 dark: border-dark-alert-300"
-              : "border-light-surface-400"
-          } rounded py-3 px-4 font-SoraSemiBold text-light-txt-100`}
+              ? "border-light-alert-300"
+              : "border-light-surface-400 dark:border-dark-surface-400"
+          } rounded py-3 px-4 font-SoraSemiBold text-light-txt-100 dark:bg-dark-surface-300 text-dark-txt-100`}
           secureTextEntry={secureTextEntry}
           placeholderTextColor={placeholderTextColor}
           onChangeText={onChangeText}
