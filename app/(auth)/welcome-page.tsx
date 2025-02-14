@@ -8,8 +8,9 @@ import {
   View,
 } from "react-native";
 import { icons } from "@/constants";
-import CustomBigButton from "@/components/CustomBigButton";
+import CustomBigButton from "@/components/buttons/CustomBigButton";
 import useThemeSwitch from "@/hooks/useThemeSwitch";
+import { router } from "expo-router";
 
 const WelcomePage = () => {
   const { colorScheme } = useThemeSwitch();
@@ -61,6 +62,9 @@ const WelcomePage = () => {
           textVariant="white"
           bgVariant={accountBtnBg}
           className="mb-4"
+          onPress={() => {
+            router.push("/(auth)/sign-up");
+          }}
         />
         <CustomBigButton
           title="Continue with Metamask"

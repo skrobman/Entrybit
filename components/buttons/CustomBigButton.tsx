@@ -40,6 +40,7 @@ const getTextVariantStyle = (variant: ButtonProps["textVariant"]) => {
 };
 
 const CustomBigButton = ({
+  onPress,
   title,
   textVariant,
   bgVariant,
@@ -47,6 +48,7 @@ const CustomBigButton = ({
 }: ButtonProps) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       className={`${getBgVariantStyle(bgVariant)} w-full rounded-full p-4 justify-center items-center ${className}`}
     >
       <Text

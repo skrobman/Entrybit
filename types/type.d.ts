@@ -15,4 +15,18 @@ declare interface ButtonProps {
     | "light-grey"
     | "dirty-white";
   className?: string;
+  onPress?: () => void;
+  children?: string;
 }
+
+type AuthInputProps = {
+  title: string;
+  placeholder: string;
+  className?: string;
+  secureTextEntry?: boolean;
+  placeholderTextColor?: string;
+  error?: boolean;
+  onChangeText?: (text: string) => void;
+  errorMessage?: string;
+  onBlur?: () => void;
+};
