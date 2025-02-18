@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -9,6 +10,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import { useSignUp } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
 import BackButton from "@/components/buttons/BackButton";
 import AuthInput from "@/components/inputs/AuthInput";
 import CustomBigButton from "@/components/buttons/CustomBigButton";
@@ -31,6 +34,14 @@ const SignUp = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+?[1-9]\d{1,14}$/;
     return emailRegex.test(input) || phoneRegex.test(input);
+  };
+
+  const onSignUpPress = () => {
+    if (!emailOrPhone || !password || !confirmPassword) {
+      Alert.alert("Please enter a valid data!");
+    } else {
+      return router.push("/(auth)/verify-email");
+    }
   };
 
   return (
@@ -95,7 +106,11 @@ const SignUp = () => {
             </View>
           </ScrollView>
           <View className="absolute bottom-0 left-0 right-0 mx-4 mb-2">
-            <CustomBigButton title="Create Account" bgVariant={accountBtnBg} />
+            <CustomBigButton
+              title="Create Account"
+              bgVariant={accountBtnBg}
+              onPress={onSignUpPress}
+            />
           </View>
         </View>
       </KeyboardAvoidingView>

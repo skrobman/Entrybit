@@ -30,3 +30,13 @@ type AuthInputProps = {
   errorMessage?: string;
   onBlur?: () => void;
 };
+
+type TimerProps = {
+  initialTime: number;
+  activeLabel?: string;
+  expiredLabel?: string;
+  containerClass?: string;
+  textClass?: string;
+  expiredTextClass?: string;
+  onTimerEnd?: () => void;
+};

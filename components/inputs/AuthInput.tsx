@@ -40,7 +40,7 @@ const AuthInput = ({
             error
               ? "border-light-alert-300"
               : "border-light-surface-400 dark:border-dark-surface-400"
-          } rounded py-3 px-4 font-SoraSemiBold text-light-txt-100 dark:bg-dark-surface-300 text-dark-txt-100`}
+          } rounded py-3 px-4 font-SoraSemiBold text-light-txt-100 dark:bg-dark-surface-300 dark:text-dark-txt-100`}
           secureTextEntry={secureTextEntry}
           placeholderTextColor={placeholderTextColor}
           onChangeText={onChangeText}
